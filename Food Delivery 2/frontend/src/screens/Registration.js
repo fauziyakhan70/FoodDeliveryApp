@@ -1,47 +1,40 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Link } from "react-router-dom"; // Import the Link component
+import { Link } from "react-router-dom";
 
 function Registration() {
-  const [credentials, setcredentials] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+    const [credentials, setCredentials] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-    // Log the form data that will be sent to the API
-    console.log("Form data:", credentials);
+        try {
+            const response = await fetch(
+                "https://food-delivery-73nn.vercel.app/createuser/register",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(credentials),
+                }
+            );
 
-    try {
-      const response = await fetch(
-        "food-delivery-73nn.vercel.app/createuser/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: credentials.username,
-            email: credentials.email,
-            password: credentials.password,
-          }),
+            const json = await response.json();
+            console.log(json);
+        } catch (error) {
+            console.error("Error during registration:", error);
         }
-      );
+    };
 
-      const json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error("Error during registration:", error);
-    }
-  };
-
-  const onChange = (event) => {
-    setcredentials({ ...credentials, [event.target.name]: event.target.value });
-  };
+    const onChange = (event) => {
+        setCredentials({ ...credentials, [event.target.name]: event.target.value });
+    };
 
   return (
     <div>

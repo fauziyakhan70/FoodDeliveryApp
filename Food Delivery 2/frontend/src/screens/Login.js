@@ -1,55 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function Login() {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
 
-  const isTokenValid = () => {
-    const token = localStorage.getItem("token");
-    return !!token;
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+        try {
+            const response = await fetch(
+                "https://food-delivery-73nn.vercel.app/createuser/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(credentials),
+                }
+            );
 
-    try {
-      const response = await fetch(
-        "food-delivery-73nn.vercel.app/createuser/login",
+            if (response.ok) {
+                const { token } = await response.json();
+                localStorage.setItem("token", token);
 
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(credentials),
+                if (token) {
+                    toast.success("Login successful!", {
+                        autoClose: 2000,
+                    });
+                    window.location.href = "/"; // You can replace "/" with the desired URL
+                }
+            } else {
+                toast.error("Login failed. Please check your credentials.");
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+            toast.error("An error occurred during login.");
         }
-      );
+    };
 
-      if (response.ok) {
-        const { token } = await response.json();
-        localStorage.setItem("token", token);
+    const onChange = (event) => {
+        setCredentials({ ...credentials, [event.target.name]: event.target.value });
+    };
 
-        if (token) {
-          toast.success("Login successful!", {
-            autoClose: 2000,
-          });
-          window.location.href = "/"; // You can replace "/" with the desired URL
-        }
-      } else {
-        toast.error("Login failed. Please check your credentials.");
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      toast.error("An error occurred during login.");
-    }
-  };
-
-  const onChange = (event) => {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value });
-  };
 
   return (
     <div>
