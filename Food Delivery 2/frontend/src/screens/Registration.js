@@ -18,7 +18,7 @@ function Registration() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/createuser/register",
+        "food-delivery-73nn.vercel.app/createuser/register",
         {
           method: "POST",
           headers: {
