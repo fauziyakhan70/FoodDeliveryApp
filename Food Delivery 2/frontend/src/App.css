@@ -1,0 +1,140 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.hover_effect {
+  transition: all 0.3s;
+}
+
+.hover_effect:hover {
+  transform: scale(1,1); /* Corrected value */
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cards{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 10px;
+}
+.shopping_cart{
+  justify-content: flex-end;
+  display:flex;
+}
+
+
+.cart-item {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.cart-item button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+/* about-us.css */
+
+.about-us {
+  margin-top:5rem;
+  max-width: 800px;
+  /* margin: 0 auto; */
+  padding:18rem;
+  background-image: url('https://img.freepik.com/free-vector/food-delivery-logo-with-bike-man-courier_1308-48914.jpg?size=626&ext=jpg&ga=GA1.1.87170709.1696377600&semt=ais');
+  background-size: cover; /* Ensures the image covers the entire container */
+  background-position: center; /* Centers the image within the container */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: black; /* Set the text color to be visible against the background */
+  margin-bottom: 40px;
+  
+}
+.img-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px
+  
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* OrderPage Styles */
+.order-now-button {
+  display: flex;
+  margin: 20px auto; 
+  margin-left: 50%;
+  background-color: #9370DB; /* Lavender color */
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-now-button:hover {
+  background-color: #9370DB; /* Darker lavender color on hover */
+}
+
+
+
